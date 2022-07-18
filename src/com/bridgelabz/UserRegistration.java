@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class UserRegistration {
     final static String FIRST_NAME_REGEX = "^[A-Z]{1}[a-z]{2,}$";
     final static String LAST_NAME_REGEX = "^[A-Z]{1}[a-z]{2,}";
-    final static String EMAIL_REGEX = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+    final static String EMAIL_REGEX = "[a-zA-Z0-9]+[-.+]?[a-z0-9]*@[a-z0-9]+[.][a-z]{2,3}[.]?[a-z]{0,3}";
     final static String MOBILE_NO_REGEX = "(91)?\\s{1}?[6-9]{1}[0-9]{9}$";
     final static String PASSWORD_REGEX_RULE_4 = "(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&]{1}).{8,}";
 
