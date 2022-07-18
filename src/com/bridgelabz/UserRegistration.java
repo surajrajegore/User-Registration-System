@@ -6,6 +6,7 @@ public class UserRegistration {
     final static String FIRST_NAME_REGEX = "^[A-Z]{1}[a-z]{2,}$";
     final static String LAST_NAME_REGEX = "^[A-Z]{1}[a-z]{2,}";
     final static String EMAIL_REGEX = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+    final static String MOBILE_NO_REGEX = "(91)?\\s{1}?[6-9]{1}[0-9]{9}$";
 
     public static void main(String[] args) {
         System.out.println("Welcome to User registration Using Regex");
@@ -20,6 +21,9 @@ public class UserRegistration {
 
         System.out.println("Enter Email");
         userRegistration.isValidEmail(UserInput.getInput());
+
+        System.out.println("Enter mobile number:");
+        userRegistration.isValidMobileNumber(UserInput.getInput());
     }
 
     private static boolean isValidInput(String regex, String userInput) {
@@ -42,6 +46,7 @@ public class UserRegistration {
             System.out.println(e);
         }
     }
+
     private void isValidLastName(String userInput) {
 
         try {
@@ -54,17 +59,29 @@ public class UserRegistration {
             System.out.println(e);
         }
     }
-    private void isValidEmail(String userInput){
+
+    private void isValidEmail(String userInput) {
         try {
-            if (isValidInput(EMAIL_REGEX,userInput)){
+            if (isValidInput(EMAIL_REGEX, userInput)) {
                 System.out.println("Valid Email Address : " + userInput);
+            } else {
+                throw new InvalidUserInformationException("Invalid Email:" + userInput);
             }
-            else {
-                throw new InvalidUserInformationException("Invalid Email:" +userInput);
+        } catch (InvalidUserInformationException e) {
+            System.out.println(e);
+        }
+
+    }
+
+    private void isValidMobileNumber(String userInput){
+        try{
+            if (isValidInput(MOBILE_NO_REGEX, userInput)){
+                System.out.println("Valid Mobile Number:" +userInput);
+            }else {
+                throw new InvalidUserInformationException("Invalid Mobile Number " +userInput);
             }
         }catch (InvalidUserInformationException e){
             System.out.println(e);
         }
-
     }
 }
