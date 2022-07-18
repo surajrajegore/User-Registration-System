@@ -7,7 +7,7 @@ public class UserRegistration {
     final static String LAST_NAME_REGEX = "^[A-Z]{1}[a-z]{2,}";
     final static String EMAIL_REGEX = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
     final static String MOBILE_NO_REGEX = "(91)?\\s{1}?[6-9]{1}[0-9]{9}$";
-    final static String PASSWORD_REGEX_RULE_1 = "[A-Za-z]{8,}";
+    final static String PASSWORD_REGEX_RULE_2 = "^(?=.*[A-Z])(?=.*[a-z]).{8,}$";
 
     public static void main(String[] args) {
         System.out.println("Welcome to User registration Using Regex");
@@ -91,7 +91,7 @@ public class UserRegistration {
 
     private void isValidPassword(String userInput){
         try{
-            if (isValidInput(PASSWORD_REGEX_RULE_1, userInput)){
+            if (isValidInput(PASSWORD_REGEX_RULE_2  , userInput)){
                 System.out.println("Valid Password:" +userInput);
             }else {
                 throw new InvalidUserInformationException("Invalid Password " +userInput);
