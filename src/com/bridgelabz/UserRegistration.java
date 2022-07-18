@@ -5,15 +5,21 @@ import java.util.regex.Pattern;
 public class UserRegistration {
     final static String FIRST_NAME_REGEX = "^[A-Z]{1}[a-z]{2,}$";
     final static String LAST_NAME_REGEX = "^[A-Z]{1}[a-z]{2,}";
+    final static String EMAIL_REGEX = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
 
     public static void main(String[] args) {
         System.out.println("Welcome to User registration Using Regex");
 
         UserRegistration userRegistration = new UserRegistration();
+
         System.out.println("Enter First Name");
         userRegistration.isValidFirstName(UserInput.getInput());
+
         System.out.println("Enter Last Name");
         userRegistration.isValidLastName(UserInput.getInput());
+
+        System.out.println("Enter Email");
+        userRegistration.isValidEmail(UserInput.getInput());
     }
 
     private static boolean isValidInput(String regex, String userInput) {
@@ -47,5 +53,18 @@ public class UserRegistration {
         } catch (InvalidUserInformationException e) {
             System.out.println(e);
         }
+    }
+    private void isValidEmail(String userInput){
+        try {
+            if (isValidInput(EMAIL_REGEX,userInput)){
+                System.out.println("Valid Email Address : " + userInput);
+            }
+            else {
+                throw new InvalidUserInformationException("Invalid Email:" +userInput);
+            }
+        }catch (InvalidUserInformationException e){
+            System.out.println(e);
+        }
+
     }
 }
