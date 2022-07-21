@@ -30,7 +30,7 @@ public class UserRegistration {
         userRegistration.isValidPassword(UserInput.getInput());
     }
 
-    private static boolean isValidInput(String regex, String userInput) {
+    public static boolean isValidInput(String regex, String userInput) {
 
         boolean b = Pattern.matches(regex, userInput);
 
@@ -38,66 +38,76 @@ public class UserRegistration {
     }
 
 
-    private void isValidFirstName(String userInput) {
+    public boolean isValidFirstName(String userInput) {
 
         try {
             if (isValidInput(FIRST_NAME_REGEX, userInput)) {
                 System.out.println("Valid First Name : " + userInput);
+                return true;
             } else {
                 throw new InvalidUserInformationException("Invalid First Name : " + userInput);
             }
         } catch (InvalidUserInformationException e) {
             System.out.println(e);
         }
+        return false;
     }
 
-    private void isValidLastName(String userInput) {
+    public boolean isValidLastName(String userInput) {
 
         try {
             if (isValidInput(LAST_NAME_REGEX, userInput)) {
                 System.out.println("Valid Last Name : " + userInput);
+                return true;
             } else {
                 throw new InvalidUserInformationException("Invalid Last Name : " + userInput);
             }
         } catch (InvalidUserInformationException e) {
             System.out.println(e);
         }
+        return false;
     }
 
-    private void isValidEmail(String userInput) {
+    public boolean isValidEmail(String userInput) {
         try {
             if (isValidInput(EMAIL_REGEX, userInput)) {
                 System.out.println("Valid Email Address : " + userInput);
+                return true;
             } else {
                 throw new InvalidUserInformationException("Invalid Email:" + userInput);
             }
         } catch (InvalidUserInformationException e) {
             System.out.println(e);
         }
+        return false;
 
     }
 
-    private void isValidMobileNumber(String userInput) {
+    public boolean isValidMobileNumber(String userInput) {
         try {
             if (isValidInput(MOBILE_NO_REGEX, userInput)) {
                 System.out.println("Valid Mobile Number:" + userInput);
+                return true;
             } else {
                 throw new InvalidUserInformationException("Invalid Mobile Number " + userInput);
             }
         } catch (InvalidUserInformationException e) {
             System.out.println(e);
         }
+        return false;
     }
 
-    private void isValidPassword(String userInput) {
+    public boolean isValidPassword(String userInput) {
         try {
             if (isValidInput(PASSWORD_REGEX_RULE_4, userInput)) {
                 System.out.println("Valid Password:" + userInput);
+                return true;
             } else {
                 throw new InvalidUserInformationException("Invalid Password " + userInput);
             }
         } catch (InvalidUserInformationException e) {
             System.out.println(e);
         }
+        return false;
     }
 }
